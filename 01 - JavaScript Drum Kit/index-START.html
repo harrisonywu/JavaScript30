@@ -58,7 +58,19 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-
+  // document.querySelectorAll('div').forEach(node => {
+  //   document.addEventListener('keypress', e => {
+  //     const keyPressed = node.dataset.key
+  //     document.querySelector(`audio[data-key="${keyPressed}"]`).play()
+  //   })
+  // })
+  window.addEventListener('keydown', ({keyCode}) => {
+    const keyAudio = document.querySelector(`audio[data-key="${keyCode}"`)
+    const keyDisplay = document.querySelector(`div[data-key="${keyCode}"`)
+    keyAudio.onplay = () => keyDisplay.classList.add('playing')
+    keyAudio.onended = () => keyDisplay.classList.remove('playing')
+    keyAudio.play()
+  })
 </script>
 
 
